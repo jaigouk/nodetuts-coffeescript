@@ -1,9 +1,11 @@
 {
   "name": "coffee-nodetuts",
   "version":    "0.0.1",
-  "dependencies": { 
-	  "step" : ">= 0.0.1", 
-	  "carrier": ">= 0.0.1",
-	  "socket.io": ">= 0.7.3"
+  "dependencies": {     
+    "docco": ">= 0.0.1",
+	  "step" : ">= 0.0.4", 
+	  "carrier": ">= 0.1.2",
+	  "socket.io": ">= 0.7.6",
+	  "connect": "1.5.1"
 	}
 }
