@@ -18,9 +18,12 @@
 # NodeTuts in Coffeescript
 Awesome Nodetuts in coffeescript.
 
-## Dependencies
-* step
-* carrier
+## Works on...
+* node           v0.4.8 
+* coffee-script  v1.1.1
+* step           v0.0.4
+* carrier        v0.1.2
+* socket.io      v0.7.6 
 
 # Resources
 
