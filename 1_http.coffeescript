@@ -6,4 +6,4 @@ server = http.createServer (req, res) ->
     'Content-Type': 'text/pain'
   res.end 'Hello World'
 
-server.listen 3000, 'localhost'
+server.listen 4000, 'localhost'

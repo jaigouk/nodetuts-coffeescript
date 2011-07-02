@@ -18,7 +18,7 @@ net.createServer (conn) ->
       username = line
       conn.write "Hello #{username}! \n"
     conn.end() if line == 'quit' 
-    connections.forEach (one_connection) ->
+    for one_connection in connections
       one_connection.write("#{username}: #{line}\n")
     
-.listen 3000
+.listen 4000

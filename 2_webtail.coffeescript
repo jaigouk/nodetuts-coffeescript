@@ -19,4 +19,4 @@ server = http.createServer (req, res) ->
     # This res.write line may cause a problem
     res.write(data)
   
-server.listen 3000
+server.listen 4000

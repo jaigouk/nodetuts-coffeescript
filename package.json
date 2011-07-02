@@ -3,6 +3,7 @@
   "version":    "0.0.1",
   "dependencies": { 
 	  "step" : ">= 0.0.1", 
-	  "carrier": ">= 0.0.1"
+	  "carrier": ">= 0.0.1",
+	  "socket.io": ">= 0.7.3"
 	}
 }
