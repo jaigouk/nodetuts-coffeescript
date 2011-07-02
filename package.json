@@ -1,0 +1,8 @@
+{
+  "name": "coffee-nodetuts",
+  "version":    "0.0.1",
+  "dependencies": { 
+	  "step" : ">= 0.0.1", 
+	  "carrier": ">= 0.0.1"
+	}
+}
