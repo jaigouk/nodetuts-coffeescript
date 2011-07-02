@@ -1,9 +1,0 @@
-http = require('http')
-
-server = http.createServer (req, res) ->
-  console.log 'new req'
-  res.writeHead 200,
-    'Content-Type': 'text/pain'
-  res.end 'Hello World'
-
-server.listen 4000, 'localhost'
