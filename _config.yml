@@ -1,4 +1,4 @@
-source: https://github.com/jaigouk/nodetuts-coffeescript
+source: nodetuts-coffeescript
 markdown: rdiscount
 pygments: true     
-permalink: /:categoories/:title
+permalink: /:title
