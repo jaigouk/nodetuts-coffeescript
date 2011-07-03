@@ -1,3 +1,4 @@
+source: https://github.com/jaigouk/nodetuts-coffeescript
 markdown: rdiscount
 pygments: true     
 permalink: /:categoories/:title
