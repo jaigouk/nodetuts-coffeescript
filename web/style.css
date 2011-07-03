@@ -1,0 +1,568 @@
+/*  
+Theme Name: LifeStreaming White
+Theme URI: http://www.project66.net/lifestreaming-white/
+Description: Sexy & slick <b>lifestreaming</b> template, utilizing jQuery for smooth post transitions. Theme by jono @ <a href="http://www.project66.net/">jono.blog</a>.
+Version: 1.1
+Author: Jono
+Author URL: http://www.project66.net/
+Tags: LifeStreaming, LifeStream, horizontal layout, white, clean, simple, minimal, lightweight, red, 2 column
+*/
+
+/* CSS RESET by: http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {	
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 97%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {	
+	font-family: arial, verdana, sans-serif;
+	line-height: 1;
+	color: gray;
+	background: white url('images/bg.gif') no-repeat;
+}
+ol, ul {
+	list-style: none;
+}
+strong {
+	font-weight: bold;
+}
+h3#comments, h3#respond {
+	font-size: 18px;
+	color: #333;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote {
+	margin: 8px 0px;
+	padding: 8px 22px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background-color: #efefef;
+}
+blockquote, q {
+	quotes: "" "";
+}
+code { font: 1.1em 'Courier New', Courier, Fixed; }
+em { font-style: italic; }
+p { padding: 8px 0 8px 0; }
+
+/* GENERIC ELEMENTS */
+a:link {
+	text-decoration: none;
+	color: #000;
+}
+a:visited {
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.left {
+	float: left;
+	position: relative;
+}
+.right {
+	float: right;
+}
+.clear {
+	clear: both;
+}
+a.more-link {
+	border-top: 1px solid #ccc;
+	background: #efefef;
+	padding: 3px 5px;
+	font-weight: bold;
+	color: #666;
+}
+
+/* TOP NAVIGATION */
+li.current-cat a {
+	font-weight: bold;
+}
+
+/* POSTS */
+.entry {
+	line-height: 18px;
+	color: #000;
+}
+.entry h3, .entry h4, .entry h5, .entry h6 {
+	font-size: 1.5em;
+	color: #333;
+	margin-top: 15px;
+}
+.entry .alignright {
+	margin: 10px 0 0 15px;
+}
+.ulSlider .entry ul, .entry ul {
+	list-style-type: square;
+	list-style-position: outside;
+	margin-left: 22px;
+}
+.entry a:link {color: #333;}
+.entry a:visited {color: #c4c4c4;}
+.entry a:active {color: #ff0000;}
+.sliderLi h2 {
+	font-weight: bold;
+}
+.sliderLi small {
+	color: #a8a8a8;
+	font-size: .8em;
+}
+.postmetadata {
+	border-top: 1px solid #efefef;
+	font-size: .8em;
+}
+.gravatar {
+	border: 1px solid #efefef;
+	padding: 2px;
+	margin-bottom: 3px;
+}
+
+/* CONTENT SLIDER */
+.sliderGallery {
+     background-color: #fff;
+     overflow: hidden;
+     position: relative;
+     width: 600px;
+ }
+.sliderGallery .pane {
+	width: 600px;
+	overflow: hidden;
+}
+
+.sliderGallery ul {
+    padding: 0;
+	list-style:none;
+    margin: 0;
+}
+
+.sliderGallery ul li.sliderLi {
+	float: left;
+	padding: 20px 40px 0 0;
+	width: 260px;
+}
+.sliderGallery .panel {
+	width: 600px;
+	float: left;
+	border: 1px solid #000;
+	display: inline;
+}
+a.eventHeading {
+	background-position: left center;
+	padding: 2px 0 1px 22px;
+	color: #777;
+	font-size: 90%;
+}
+.entry .lifestream {
+	padding-top: 5px;
+} 
+.sliderLi h2.firstChild {
+	color: #000;
+	font-size: 1.8em;
+}
+.sliderLi h2 {
+	padding-bottom: 2px;
+}
+.sliderHeading {
+	overflow: hidden;
+	height: 24px;
+}
+
+.post .lifestream {
+	font-size: 1.1em;
+	padding-top: 20px;
+}
+.lifestream h2.lifestream_date {
+	display: none;
+}
+.lifestream_text {
+	margin: 0;
+	color: #ccc;
+}
+.lifestream_text p {
+	margin: 0;
+	padding: 0;
+}
+.sliderLi .lifestream_events {
+	line-height: 14px;
+}
+.lifestream_events {
+	color: #000;
+	margin-top: 0;
+	padding-top: 0;
+}
+.ulSlider .entry .lifestream_events ul, .ulSlider .entry .lifestream_events li {
+	text-indent: 0;
+	margin: 0;
+	border: 0;
+	font-size: 1em;
+	padding: 0;
+	list-style: none;
+}
+.lifestream_hour {
+	font-weight: bold;
+}
+.lifestream td {
+	border-top: 1px solid #efefef;
+}
+.slider {
+    width: 600px;
+    height: 19px;
+	font-size: 9px;
+    position: relative;
+    background-color: #d8d8d8;
+}
+.slider a {
+	text-decoration: none;
+}
+
+.handle {
+    position: absolute;
+	left: 0;
+    cursor: move;
+	line-height: 19px;
+    height: 19px;
+    width: 100px;
+    top: 0;
+    background: #ff0000 url('images/scroll_arrows.gif') center center no-repeat;
+	font-size: 9px !important;
+	text-align: center;
+	color: #fff;
+	border: 0;
+	text-decoration: none;
+    z-index: 130;
+} 
+.slider span {
+    color: #bbb;
+    font-size: 80%;
+    cursor: pointer;
+	line-height: 19px;
+    z-index: 1;
+	text-align: center;
+	float: left;
+	position: relative;
+}
+
+/* COMMENTS LIST */
+div.comments {
+	padding-top: 20px;
+}
+ol.commentlist {
+	margin: 15px 0;
+}
+ol.commentlist li {
+	padding-bottom: 20px;
+}
+ol.commentlist .commentHead {
+	height: 22px;
+	background: transparent url('images/efefef.gif') 0 50% repeat-x;
+}
+ol.commentlist .commentHeading {
+	background: #fff;
+	padding-right: 5px;
+	font-size: 18px;
+}
+ol.commentlist .commentHeading cite {
+	color: #333;
+}
+ol.commentlist .commentmetadata {
+	background: #fff;
+	padding-left: 5px;
+}
+ol.commentlist .commentmetadata, ol.commentlist .commentmetadata a {
+	color: #555;
+}
+ol.commentlist .num {
+	margin-left: -3px;
+	font-size: 24px;
+	color: #ccc;
+	padding: 0 14px 0 0;
+}
+ol.commentlist .commentEntry {
+	border-bottom: 1px solid #efefef;
+	width: 550px;
+}
+ol.commentlist .commentEntry p {
+	padding-top: 0;
+	line-height: 18px;
+}
+
+/* SEARCH FORM */
+#searchform label {
+	font-size: 97%;
+	color: #AFAFAF;
+	text-transform: uppercase;
+}
+#searchform div {
+	padding-top: 5px;
+}
+#searchform input#s {
+	width: 165px;
+}
+
+/* COMMENTS FORM */
+#commentform input, #commentform textarea, #searchform input {
+	background: #efefef;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+#commentform textarea#comment {
+	width: 580px;
+}
+#commentform label {
+	text-transform: uppercase;
+	font-size: .8em;
+}
+
+/* IMAGES */
+p img {
+	padding: 0;
+	max-width: 100%;
+	}
+
+img.centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.post img.alignright {
+	margin: 0 0 2px 7px;
+	display: inline;
+}
+
+.post img.alignleft {
+	margin: 5px 15px 2px 0px;
+	display: inline;
+}
+
+.sliderLi .alignright {
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-left: 0;
+	float: left;
+}
+
+.post .alignright {
+	margin-left: 10px;
+	margin-top: 5px;
+	margin-bottom: 15px;	
+	float: right;
+}
+
+.alignleft {
+	margin: 5px 10px 10px 0;
+	float: left;
+}
+.alignnone { /* has no float, so defaults left and needs minor wedge to be flush with text */
+	margin-right: 10px;
+	margin-top: 5px;	
+}	
+
+/* IMAGE CAPTIONS */
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption img {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+	color: #fff;
+	background-color: #333;
+	text-align: center;
+	font-size: 11px;
+	line-height: 15px;
+	padding: 5px 12px;
+	margin: 0 10px 0 0;
+}
+
+/* CALENDER WIDGET */
+#wp-calendar #prev a, #wp-calendar #next a {
+	background: #EFEFEF;
+	border-top:1px solid #CCCCCC;
+	color:#666;
+	font-weight:bold;
+	padding:3px 5px;
+	}
+#wp-calendar #next {
+	right: 10px;
+	text-align: right;
+}	
+#wp-calendar { width: 170px;}
+#wp-calendar a {
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+	}
+
+#wp-calendar caption {
+	text-transform: uppercase;
+	font-size: 103%;
+	padding-bottom: 5px;
+	color: #AFAfAf;
+	}
+#wp-calendar td {
+	color: #666;
+	padding: 3px 0px;
+}
+#wp-calendar th {
+	color: #ccc;
+	font-style: normal;
+	text-transform: capitalize;
+	}
+
+/* SPECIFIC SECTIONS */
+div.top_nav {
+	position: absolute;
+	top: 160px;
+	left: 40px;
+	text-transform: uppercase;
+}
+div.top_nav a {
+	color: #afafaf;
+}
+a.blog_title:link, a.blog_title:visited  {
+	font-weight: bold;
+	color: #000;
+	padding-right: 40px;
+}
+div.top_nav ul li {
+	float: left;
+	padding-right: 25px;
+}
+
+div#content_container {
+	padding-top: 220px;
+	margin-left: 40px;
+	width: 870px;
+	display: block;
+}
+div#content_container #content {
+	float: left;
+	width: 600px;
+	margin-right: 40px;
+}
+div#content_container #sidebar {
+	float: left;
+}
+div#content .post h2 {
+	font-size: 1.8em;
+}
+div#wp_page_numbers_container {
+	position: relative;
+	display: block;
+	font-size: .8em;
+	padding-bottom: 20px;
+}
+div#wp_page_numbers li {
+	float: left;
+}
+div#wp_page_numbers a {
+	float: left;
+	margin-left: 2px;
+	background: #ccc;
+	padding: 5px 8px;
+}
+div#wp_page_numbers a:hover {
+	float: left;
+	margin-left: 2px;
+	background: #c3c3c3;
+	padding: 5px 8px;
+}
+div#wp_page_numbers li.page_info {
+	font-weight: bold;
+	line-height: 20px;
+	padding-right: 20px;
+}
+div#wp_page_numbers .active_page a {
+	color: #fff;
+	background: #666;
+}
+
+div#footer {
+	border-top: 1px solid #efefef;
+	font-size: .7em;
+	width: 600px;
+	line-height: 18px;
+	text-transform: uppercase;
+	left: 40px;
+	position: absolute;
+}
+
+
+/* WIDGETS */
+div#sidebar .widget {
+	width: 230px;
+	margin-bottom: 20px;
+}
+div#sidebar .widget li {
+	padding: 2px 0;
+}
+div#sidebar .widget_archive li {
+	padding: 0;
+}
+div#sidebar .widget_archive h2 { display: none;}
+div#sidebar .widget_archive a {
+	display: block;
+	margin-bottom: 2px;
+	padding: 6px 5px 3px 5px;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: .8em;
+	color: #aaa;
+	background-color: #D8D8D8;
+} 
+div#sidebar li.current_page_item a {
+	font-weight: bold;
+}
+div#sidebar .widget_archive li {
+	border-bottom: 1px solid #fff;
+}
+div h2.widgettitle { 
+	padding-bottom: 3px;
+	font-size: 97%;
+	color: #AFAFAF;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+div#sidebar .widget_archive a:hover {
+	color: #333;
+	background-color: #D1D1D1;
+}
