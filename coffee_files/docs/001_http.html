@@ -1,0 +1,38 @@
+<!DOCTYPE html>  <html> <head>   <title>001_http.coffee</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="000_intro.html">                 000_intro.coffee               </a>                                           <a class="source" href="001_http.html">                 001_http.coffee               </a>                                           <a class="source" href="002_child_process.html">                 002_child_process.coffee               </a>                                           <a class="source" href="003_pump.html">                 003_pump.coffee               </a>                                           <a class="source" href="004_step.html">                 004_step.coffee               </a>                                           <a class="source" href="005_chat.html">                 005_chat.coffee               </a>                                           <a class="source" href="006_socket_chat.html">                 006_socket_chat.coffee               </a>                                           <a class="source" href="007_socket.io_chat.html">                 007_socket.io_chat.coffee               </a>                                           <a class="source" href="008_0_connect.html">                 008_0_connect.coffee               </a>                                           <a class="source" href="008_1_serve-js.html">                 008_1_serve-js.coffee               </a>                                           <a class="source" href="008_2_log-it.html">                 008_2_log-it.coffee               </a>                                           <a class="source" href="009_express.html">                 009_express.coffee               </a>                                           <a class="source" href="010_0_express2.html">                 010_0_express2.coffee               </a>                                           <a class="source" href="010_1_products.html">                 010_1_products.coffee               </a>                                           <a class="source" href="011_express2.html">                 011_express2.coffee               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               001_http.coffee             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <h1>Basic http server</h1>
+
+<hr />
+
+<ul>
+<li><a href="http://nodejs.org/docs/v0.4.9/api/http.html#http.Server">Node API doc - HTTP</a></li>
+</ul>
+
+<hr />
+
+<h3>HTTP</h3>
+
+<p>To use the HTTP server and client one must require('http').    </p>
+
+<p>The HTTP interfaces in Node are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses--the user is able to stream data.</p>
+
+<p>HTTP message headers are represented by an object like this:</p>
+
+<p>{ 'content-length': '123',
+  'content-type': 'text/plain',
+  'connection': 'keep-alive',
+  'accept': '<em>/</em>' }</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http = </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
+ </pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h3>response.writeHead(statusCode, [reasonPhrase], [headers])</h3>
+
+<p>This method must only be called once on a message and it must be called before response.end() is called.
+If you call response.write() or response.end() before calling this, the implicit/mutable headers will be calculated and call this function for you.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">server = </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span> <span class="nf">(req, res) -&gt;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s1">&#39;new req&#39;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/pain&#39;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span> <span class="s1">&#39;Hello World&#39;</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h3>server.listen(port, [hostname], [callback])</h3>
+
+<p>Begin accepting connections on the specified port and hostname. If the hostname is omitted, the server will accept connections directed to any IPv4 address (INADDR_ANY).</p>
+
+<p>To listen to a unix socket, supply a filename instead of port and hostname.</p>
+
+<p>This function is asynchronous. The last parameter callback will be called when the server has been bound to the port.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">server</span><span class="p">.</span><span class="nx">listen</span> <span class="mi">4000</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
