@@ -1,0 +1,16 @@
+!!! 5
+html
+  head                 
+    link(rel='stylesheet', href='/css/style.css', type='text/css')
+    title My Template
+  body
+    #main  
+      #header
+        - if (session.user)  
+          #user= 'logged in as ' + session.user.login
+          #logout
+            a(href='/sessions/destroy') logout
+      - if (flash.warn)
+        p#warn= flash.warn
+      h1 NodeTuts in Coffeescript
+      #container!= body

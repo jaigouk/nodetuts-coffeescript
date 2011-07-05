@@ -1,11 +1,39 @@
 body {
-  font-family: Heveltica, Arial, Sans-Serif;
+  font-family: Helvetica, Arial, Sans-Serif;
   font-size: 16px;
 }
 
 #main {
-  width: 960px;
+  width: 660px;
   margin: 0 auto;
   border: 1px solid #ddd;
   padding: 1em;
+}
+
+#header {
+  float: right;
+  clear: both;
+}
+
+#user {
+  float: left;
+  margin-right: 1em;
+}
+
+#logout {
+  float: left;
+}            
+
+#warn {
+  background-color: #fdd;
+  padding: 1em;
+  border: 1px solid red;
+  width: 200px;
+}
+
+#ok {
+  background-color: #D6F8DE;
+  padding: 1em;
+  border: 1px solid green;
+  width: 200px;
 }

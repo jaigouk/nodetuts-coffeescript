@@ -5,7 +5,8 @@ Icon?
 ._*
 _site
 node_modules
-
+coffee_files/node_modules
+coffee_files/static/uploads/photos
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes

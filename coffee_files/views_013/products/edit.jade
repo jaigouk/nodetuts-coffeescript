@@ -1,0 +1,4 @@
+h1 Editing #{product.name}
+form(action='/products/'+product.id, method='POST')
+  div!= partial('product/form', {locals: {product: product, photos: photos}})
+  

@@ -24,6 +24,29 @@ Awesome Nodetuts in coffeescript.
 * step           v0.0.4
 * carrier        v0.1.2
 * socket.io      v0.7.6 
+* qs             v0.2.0
+* mime           v1.2.2
+* connect        v1.5.1
+* jade           v0.12.4
+* express        v2.4.0
+* connect-form   v0.2.1
+* connect-redis  v1.0.6
+* nodemon        v0.5.3
+* node-inspector v0.1.6
+* mongoose       v1.5.0   
+
+# Directory structure
+Every coffeescript files are in coffee_files folder
+
+And files are numbered liked this,
+`each episode nubmer + number of file that is needed + name`
+
+For static files, I used just one "static" folder.
+And for the views, I used `views_ + episode number`
+    
+# Documents
+I use docco to generate html files. 
+Those files are in coffee_files/docs
 
 # Resources
 There're lots of resources out there, but I selected these resources that are actually useful for me.
