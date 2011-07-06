@@ -8,7 +8,8 @@ body {
 }
 a {
   color: #261a3b;
-}
+} 
+div.demo { padding: 10px !important; }; 
   a:visited {
     color: #261a3b;
   }
@@ -115,7 +116,7 @@ table td {
   }
     pre, tt, code {
       font-size: 12px; line-height: 18px;
-      font-family: Monaco, Consolas, "Lucida Console", monospace;
+      font-family: Menlo, Monaco, Consolas, "Lucida Console", monospace;
       margin: 0; padding: 0;
     }
 

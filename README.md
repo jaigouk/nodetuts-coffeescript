@@ -39,11 +39,12 @@ Awesome Nodetuts in coffeescript.
 Every coffeescript files are in coffee_files folder
 
 And files are numbered liked this,
-`each episode nubmer + number of file that is needed + name`
+`each_episode_nubmer + number_of_file + name`
 
 For static files, I used just one "static" folder.
-And for the views, I used `views_ + episode number`
-    
+And for the views, I used `views_ + episode_number`
+       
+
 # Documents
 I use docco to generate html files. 
 Those files are in coffee_files/docs

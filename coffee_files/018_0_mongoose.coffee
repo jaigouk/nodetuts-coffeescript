@@ -1,4 +1,4 @@
-# # MongoDB and Mongoose
+# # MongoDB and Mongoose (1.5.0)
 #***   
 # * [MongoDB](http://www.mongodb.org/)
 # * [mongoose](http://mongoosejs.com/) - 1028 watchers, 89 forks! 
@@ -13,6 +13,9 @@ RedisStore = require('connect-redis')(express)
 # connecting / initializing db
 mongoose= require('mongoose')
 db = mongoose.connect('mongodb://localhost/nodetuts')
+
+# [connect-form](http://visionmedia.github.com/connect-form/) 
+# why? Connect Form is a multipart / urlencoded form parsing middleware utilizing node-formidable behind the scenes.
 
 
 app = express.createServer form 

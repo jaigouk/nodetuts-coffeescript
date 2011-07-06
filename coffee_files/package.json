@@ -1,6 +1,10 @@
 {
   "name": "coffee-nodetuts",
-  "version":    "0.0.1",
+  "description": "Nodetuts in coffeescript",
+  "homepage": "http://jaigouk.github.com/nodetuts-coffeescript/",
+  "version":    "0.1.22", 
+  "engines": {"node":"~0.4.0"},                                  
+  
   "dependencies": { 
     "coffee-script": ">=1.1.1",
     "docco": ">= 0.0.1",
@@ -11,11 +15,13 @@
 	  "mime": "1.2.2",
 	  "connect": "1.5.1",
 	  "jade": "0.12.4",
-	  "express": "2.4.0",
+	  "express": "2.3.x",
 	  "connect-form": "0.2.1",
 	  "connect-redis": "1.0.6",
 	  "nodemon": ">= 0.5.3",
 	  "node-inspector": ">= 0.1.6",
-	  "mongoose": "1.5.0"
+	  "mongoose": "1.5.0",
+	  "vows": "0.5.8",
+	  "express-resource": "0.2.1"
 	}
 }
