@@ -35,8 +35,8 @@ file_path = __dirname + '/asset/cat.jpg'
 
 fs.stat file_path, (err, stat) -> 
   console.log file_path
-  if err
-    throw err        
+  throw err if err
+            
     
   server = http.createServer (req, res) ->
     res.writeHead 200, 
@@ -50,8 +50,8 @@ fs.stat file_path, (err, stat) ->
     # **Experimental** 
     # Read the data from readableStream and send it to the writableStream. When writableStream.write(data) returns false readableStream will be paused until the drain event occurs on the writableStream. callback gets an error as its only argument and is called when writableStream is closed or when an error occurs.  
     util.pump readStream, res, (err) ->
-      if err
-        throw err
+      throw err if err
+        
 
   server.listen 4000
   

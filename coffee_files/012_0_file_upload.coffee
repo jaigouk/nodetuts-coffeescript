@@ -20,8 +20,10 @@ form = require 'connect-form'
 util= require('util')
 # connect-form middleware uses the formidable middleware to parse urlencoded and multipart form data               
 
-# If you want the files written to incomingForm.uploadDir to include the extensions of the original files, set this property to true.                           # 
-# maxFieldsSize = 2 * 1024 * 1024
+# If you want the files written to incomingForm.uploadDir to include the extensions of the original files, set this property to true.                          
+#
+# `maxFieldsSize = 2 * 1024 * 1024`
+#
 # Limits the amount of memory a field (not file) can allocate in bytes. I this value is exceeded, an 'error' event is emitted. The default size is 2MB.
 
 # We have to use binary instead of utf-8.
@@ -31,24 +33,24 @@ app = express.createServer form
   keepExtensions: true 
   encoding: 'binary'
   uploadDir: __dirname + '/static/uploads/photos'
-  maxFieldsSize: 2*1024*1024
+  maxFieldsSize: 2 * 1024 * 1024
 
-app.configure () ->     
+app.configure ->     
   app.use express.logger()         
   app.use express.bodyParser() 
   app.use express.methodOverride()
   app.use express.static(__dirname + '/static')
   
-app.configure 'development', () ->  
+app.configure 'development', ->  
   app.use express.errorHandler
     dumpExceptions: true,
     showStack: true
 
-app.configure 'production', () ->
+app.configure 'production', ->
   app.use express.errorHandler
 
 
-app.set 'views', __dirname + '/views'
+app.set 'views', __dirname + '/views_012'
 app.set 'view engine', 'jade'
 
 

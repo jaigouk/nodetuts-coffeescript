@@ -12,7 +12,7 @@ express= require('express')
 app = express.createServer()
          
 # Middleware ordering is important.
-app.configure () ->     
+app.configure ->     
   app.use express.logger()         
   #By default Express does not know what to do with POST/PUT request body, so we should add the bodyParser middleware, which will parse application/x-www-form-urlencoded and application/json request bodies and place the variables in req.body
   app.use express.bodyParser() 
@@ -20,16 +20,16 @@ app.configure () ->
   app.use express.methodOverride()
   app.use express.static(__dirname + '/static')
   
-app.configure 'development', () ->  
+app.configure 'development', ->  
   app.use express.errorHandler
     dumpExceptions: true,
     showStack: true
 
-app.configure 'production', () ->
+app.configure 'production', ->
   app.use express.errorHandler
 
 
-app.set 'views', __dirname + '/views'
+app.set 'views', __dirname + '/views_011'
 app.set 'view engine', 'jade'
 
 
@@ -51,13 +51,13 @@ app.get '/products/new', (req, res) ->
 
 app.get '/products/:id', (req, res) -> 
   product = products.find(req.params.id)   
-  res.render 'products/show2', locals: product: product
+  res.render 'products/show', locals: product: product
 
 app.get '/products/:id/edit', (req, res) -> 
   product = products.find(req.params.id)   
   res.render 'products/edit', locals: product: product
 
-app.put '/products/:id', (req, res) ->
+app.post '/products/:id', (req, res) ->
   id = req.params.id
   products.set(id, req.body.product)  
   res.redirect '/products/'+id

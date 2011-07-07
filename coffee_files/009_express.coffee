@@ -3,7 +3,7 @@
 # * [Express](http://expressjs.com/)
 # * [Lots of Exprss examples (github)](https://github.com/visionmedia/express/tree/master/examples)
 # * [Node Camp 2010 Routing Workshop](http://camp.nodejs.org/videos/session-03_routing_workshop-guillermo_rauch.html) - source codes are little bit old :( 
-# * [Jade](https://github.com/visionmedia/jade) - 
+# * [Jade](https://github.com/visionmedia/jade) 
 #***   
 #
 
@@ -22,8 +22,7 @@ app.configure 'production', () ->
   app.use express.logger()
   app.use express.errorHandler
 
-# don't forget to add / infront of views...
-app.set 'views', __dirname + '/views'
+app.set 'views', __dirname + '/views_009'
 app.set 'view engine', 'jade'
 app.set 'view options', {layout: true}
 # # Route Middleware

@@ -29,7 +29,7 @@ net.createServer (conn) ->
     if !username
       username = line
       conn.write "Hello #{username}! \n"
-    conn.end() if line == 'quit' 
+    conn.end() if line is 'quit' 
     for one_connection in connections
       one_connection.write("#{username}: #{line}\n")
     

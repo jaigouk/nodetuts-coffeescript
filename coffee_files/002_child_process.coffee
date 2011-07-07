@@ -19,7 +19,7 @@ server = http.createServer (req, res) ->
 
 # ### spawn
 # Launches a new process with the given command, with command line arguments in args. If omitted, args defaults to an empty Array.
-  tail_child = spawn('tail' , ['-f', '/var/log/system.log']) 
+  tail_child = spawn 'tail' , ['-f', '/var/log/system.log'] 
 
 # ### child.kill(signal='SIGTERM')
 #
@@ -31,6 +31,6 @@ server = http.createServer (req, res) ->
   tail_child.stdout.on 'data', (data) ->
     console.log data.toString()  
     # This res.write line may cause a problem
-    res.write(data)
+    res.write data
   
 server.listen 4000

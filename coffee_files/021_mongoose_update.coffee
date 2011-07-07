@@ -38,19 +38,19 @@ CommentSchema = new Schema
 
       
 # ## Named scopes in mongoose
-# User.female.thirties.find (err, found) ->
-#   console.log name for name in found
+#` User.female.thirties.find (err, found) ->`
+#`   console.log name for name in found`
 #   
-# User.female.olderThan(30).youngerThan(40).find (err, found) ->
-#   # do something
+#` User.female.olderThan(30).youngerThan(40).find (err, found) ->`
+#   `# do something`
 #   
-# UserSchema.namedscope 'olderThan', (age) ->
-#   this.where('age').gte(age)
+#` UserSchema.namedscope 'olderThan', (age) ->`
+#`   this.where('age').gte(age)`
 #   
-# UserSchema.namedscope 'youngerThan', (age) ->
-#   this.where('age').lt(age)
+#` UserSchema.namedscope 'youngerThan', (age) ->`
+#`   this.where('age').lt(age)`
 #   
-# UserSchema.namedscope('thirties').olderThan(30).youngerThan(40)      
+# `UserSchema.namedscope('thirties').olderThan(30).youngerThan(40)      `
 
 PostSchema.namedscope 'recent', (days) ->
   this.where('date').gte(Date.now() - 1000*60*60*24*days)

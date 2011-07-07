@@ -10,7 +10,7 @@ app = express.createServer form
   keepExtensions: true 
   encoding: 'binary'
   uploadDir: __dirname + '/static/uploads/photos'
-  maxFieldsSize: 2*1024*1024
+  maxFieldsSize: 2 * 1024 * 1024
 
 app.configure () ->     
   app.use express.logger()         
@@ -18,7 +18,8 @@ app.configure () ->
   app.use express.methodOverride()
   app.use express.static(__dirname + '/static')
   # There're other session stores like redis, memcache
-  # We're going to use express' session store  
+  # In nodetuts screencast, he used express' session store.
+  # I just wanted to try redis one.  
   # This will be erased when we restart app
   app.use express.cookieParser()
   app.use express.session 
@@ -31,12 +32,12 @@ requiresLogin = (req, res,next) ->
   else
     res.redirect('/sessions/new?redir='+req.url)
     
-app.configure 'development', () ->  
+app.configure 'development', ->  
   app.use express.errorHandler
     dumpExceptions: true,
     showStack: true
 
-app.configure 'production', () ->
+app.configure 'production', ->
   app.use express.errorHandler
 
 app.set 'views', __dirname + '/views_013'

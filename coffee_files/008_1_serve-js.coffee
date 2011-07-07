@@ -9,10 +9,9 @@ fs= require('fs')
 
 module.exports = () ->
   (req, res, next) ->    
-    # console.log req.url.substr(1)
+
     fs.readFile req.url.substr(1), (err, data) ->      
-      # console.log data                         
-      # data is a buffer.
+      # data is buffer.
       
       #just move on. 
       #some errors like getting a favicon  
