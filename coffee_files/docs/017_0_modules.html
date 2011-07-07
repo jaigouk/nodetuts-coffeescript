@@ -28,21 +28,29 @@ But it's not open for extension.</p>             </td>             <td class="co
   <span class="k">new</span> <span class="nx">RandomStringGenerator</span><span class="p">(</span><span class="nx">string_length</span><span class="p">)</span>  
   
   </pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>Here is another class example in pragprog coffeescript book. <br />
-class Shape
-  constructor: (@width) ->
-  computeArea: -> throw new Error('I am an abstract class!')</p>
+<code>class Shape</code>           </p>
 
-<p>class Square extends Shape
-  computeArea: -> Math.pow @width, 2</p>
+<p><code>constructor: (@width) -&gt;</code></p>
 
-<p>class Circle extends Shape
-  radius: -> @width / 2
-  computeArea: -> Math.PI * Math.pow @radius(), 2</p>
+<p><code>computeArea: -&gt; throw new Error('I am an abstract class!')</code></p>
 
-<p>showArea = (shape) ->
-  unless shape instanceof Shape
-    throw new Error('showArea requires a Shape instance!')
-  console.log shape.computeArea()  </p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p>class B extends A
+<p><code>class Square extends Shape</code></p>
+
+<p><code>computeArea: -&gt; Math.pow @width, 2</code></p>
+
+<p><code>class Circle extends Shape</code></p>
+
+<p><code>radius: -&gt; @width / 2</code></p>
+
+<p><code>computeArea: -&gt; Math.PI * Math.pow @radius(), 2</code></p>
+
+<p><code>showArea = (shape) -&gt;</code></p>
+
+<p><code>unless shape instanceof Shape</code></p>
+
+<p><code>throw new Error('showArea requires a Shape instance!')</code></p>
+
+<p><code>console.log shape.computeArea()</code></p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p>class B extends A
 B's prototype inherits from A's prototype. In addition, A's class-level 
 properties are copied over to B.
 The one exception: B.name would be 'B  while A.name would be 'A'

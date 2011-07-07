@@ -32,8 +32,10 @@ mongoose.model 'Product', Product
 
 # Another possible namedscope.
 #
-#` expensive: (price) ->`
+#` expensive: (price) ->`   
+#
 #`   MongooseProduct.namedscope 'expensive', (price) ->`
+#
 #`     this.where('age').gte(1000)`
 
 module.exports = Product       

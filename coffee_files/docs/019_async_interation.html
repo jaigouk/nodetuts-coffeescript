@@ -1,46 +1,40 @@
 <!DOCTYPE html>  <html> <head>   <title>019_async_interation.coffee</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">       <link rel="stylesheet" media="all" href="docco.css" />       <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>      <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>        <link rel="stylesheet" media="all" href=" http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/ui-lightness/jquery-ui.css" />                <script>         $(document).ready(function(){               var coffee_file_array = [];         var obj = $('.source');       var arr = $.makeArray(obj);       $('.source').each( function(){ coffee_file_array.push($.trim($(this).text()));});        var current_page = $.trim($('title').text());        var number_of_links = $('.source').length;             $( "#site_nav" ).text(current_page);          for (k in arr){  coffee_file_array.push($.trim(arr[k]['innerText'])  );     }         console.log(coffee_file_array.indexOf(current_page));          console.log($.inArray(current_page, coffee_file_array));         $( "#slider" ).slider({            range: "min", value: $.inArray(current_page, coffee_file_array),            min: 0,            max: number_of_links,           step: 1,           slide: function(ev,ui){                $('#site_nav').text("Jump to ... "+coffee_file_array[ui.value]).attr('href',coffee_file_array[ui.value].replace('.coffee','.html'));            }                                             });     });      </script> </head> <body>           <div id="container">     <div id="background"></div>                  <div id="menu_wrapper" class="grey">           <div class="left"></div>           <ul id="menu">               <li><a href="http://jaigouk.github.com/nodetuts-coffeescript">Home</a></li>               <li><a href="#" id="site_nav">Navigation</a></li>           </ul>       </div>       <div id="slider"></div>       <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               019_async_interation.coffee             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <h1>Asynchronous Iteration Patterns</h1>
 
-<hr />
-
-<ul>
-<li>[ </li>
-</ul>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h3>Async version</h3>
-
-<p>insertElement = (data, callback) ->
-  timeout = Math.ceil Math.random() * 3000
-  setTimeout () ->
-    callback(null, data) <br />
-  , timeout      </p>
-
-<p>insertAll = (coll, callback) -> 
-  left = coll.length
-  for i in [0...coll.length]
-    elem = coll[i]
-    ((elem) ->
-      insertElement elem, (err, _elem) ->
-        console.log "[async] #{elem} inserted"
-        callback() if --left is 0
-    )(elem)</p>
-
-<p>insertAll [1,2,3,4,5,6,7,8,9,10], ->
-  console.log '[async] insertAll finished'           </p>
-
-<h3>Queued version</h3>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">qinsertElement = </span><span class="nf">(data, callback) -&gt;</span>
+<hr />             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h3>Async version</h3>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">insertElement = </span><span class="nf">(data, callback) -&gt;</span>
   <span class="nv">timeout = </span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">3000</span>
-  <span class="nx">setTimeout</span> <span class="nf">() -&gt;</span>
+  <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
+    <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>      
+  <span class="p">,</span> <span class="nx">timeout</span>      
+           
+<span class="nv">insertAll = </span><span class="nf">(coll, callback) -&gt;</span> 
+  <span class="nv">left = </span><span class="nx">coll</span><span class="p">.</span><span class="nx">length</span>
+  <span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">...</span><span class="nx">coll</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span>
+    <span class="nv">elem = </span><span class="nx">coll</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+    <span class="p">(</span><span class="nf">(elem) -&gt;</span>
+      <span class="nx">insertElement</span> <span class="nx">elem</span><span class="p">,</span> <span class="nf">(err, _elem) -&gt;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s2">&quot;[async] #{elem} inserted&quot;</span>
+        <span class="nx">callback</span><span class="p">()</span> <span class="k">if</span> <span class="o">--</span><span class="nx">left</span> <span class="o">is</span> <span class="mi">0</span>
+    <span class="p">)(</span><span class="nx">elem</span><span class="p">)</span>
+
+<span class="nx">insertAll</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="o">-&gt;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s1">&#39;[async] insertAll finished&#39;</span>           
+
+     </pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h3>Queued version</h3>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">qinsertElement = </span><span class="nf">(data, callback) -&gt;</span>
+  <span class="nv">timeout = </span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">3000</span>
+  <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
     <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>      
   <span class="p">,</span> <span class="nx">timeout</span>      
            
 <span class="nv">qinsertAll = </span><span class="nf">(coll, callback) -&gt;</span>  
   <span class="nv">queue = </span><span class="nx">coll</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-  <span class="nv">elem = </span><span class="kc">null</span>  </pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>we wrap with (iterate code)() and iterate queue</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="p">(</span><span class="nv">iterate = </span><span class="nf">() -&gt;</span>
+  <span class="nv">elem = </span><span class="kc">null</span>  </pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>we wrap with (iterate code)() and iterate queue</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="p">(</span><span class="nv">iterate = </span><span class="o">-&gt;</span>
     <span class="k">if</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">0</span>
-      <span class="nx">callback</span><span class="p">()</span>  </pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>should return. Without this, it will callback forever.</p>             </td>             <td class="code">               <div class="highlight"><pre>      <span class="k">return</span>
+      <span class="nx">callback</span><span class="p">()</span>  </pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>should return. Without this, it will callback forever.</p>             </td>             <td class="code">               <div class="highlight"><pre>      <span class="k">return</span>
     <span class="nv">elem = </span><span class="nx">queue</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="nx">qinsertElement</span> <span class="nx">elem</span><span class="p">,</span> <span class="nf">(err, elem) -&gt;</span>
       <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span>  <span class="nx">elem</span> <span class="o">+</span> <span class="s1">&#39; inserted&#39;</span>              </pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>we can get out of stack either by callling setTimeout
-or nexTick...</p>             </td>             <td class="code">               <div class="highlight"><pre>      <span class="nx">setTimeout</span> <span class="nx">iterate</span><span class="p">,</span> <span class="mi">0</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>process.nextTick () ->
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span>  <span class="nx">elem</span> <span class="o">+</span> <span class="s1">&#39; inserted&#39;</span>              </pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>we can get out of stack either by callling setTimeout
+or nexTick...</p>             </td>             <td class="code">               <div class="highlight"><pre>      <span class="nx">setTimeout</span> <span class="nx">iterate</span><span class="p">,</span> <span class="mi">0</span></pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>process.nextTick () ->
   iterate()</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="p">)()</span>  
     
 <span class="nx">qinsertAll</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="o">-&gt;</span>

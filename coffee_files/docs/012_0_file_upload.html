@@ -16,32 +16,34 @@ https://github.com/felixge/node-formidable</p>
 
 <hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">express= </span><span class="nx">require</span> <span class="s1">&#39;express&#39;</span> 
 <span class="nv">form = </span><span class="nx">require</span> <span class="s1">&#39;connect-form&#39;</span>
-<span class="nv">util= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">)</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>connect-form middleware uses the formidable middleware to parse urlencoded and multipart form data               </p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>If you want the files written to incomingForm.uploadDir to include the extensions of the original files, set this property to true.                           # 
-maxFieldsSize = 2 * 1024 * 1024
-Limits the amount of memory a field (not file) can allocate in bytes. I this value is exceeded, an 'error' event is emitted. The default size is 2MB.</p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>We have to use binary instead of utf-8.</p>
+<span class="nv">util= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">)</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>connect-form middleware uses the formidable middleware to parse urlencoded and multipart form data               </p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>If you want the files written to incomingForm.uploadDir to include the extensions of the original files, set this property to true.                          </p>
+
+<p><code>maxFieldsSize = 2 * 1024 * 1024</code></p>
+
+<p>Limits the amount of memory a field (not file) can allocate in bytes. I this value is exceeded, an 'error' event is emitted. The default size is 2MB.</p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>We have to use binary instead of utf-8.</p>
 
 <p>https://github.com/felixge/node-formidable </p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">app = </span><span class="nx">express</span><span class="p">.</span><span class="nx">createServer</span> <span class="nx">form</span> 
   <span class="nv">keepExtensions: </span><span class="kc">true</span> 
   <span class="nv">encoding: </span><span class="s1">&#39;binary&#39;</span>
   <span class="nv">uploadDir: </span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/static/uploads/photos&#39;</span>
-  <span class="nv">maxFieldsSize: </span><span class="mi">2</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span>
+  <span class="nv">maxFieldsSize: </span><span class="mi">2</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="nf">() -&gt;</span>     
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="o">-&gt;</span>     
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">logger</span><span class="p">()</span>         
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">bodyParser</span><span class="p">()</span> 
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">methodOverride</span><span class="p">()</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/static&#39;</span><span class="p">)</span>
   
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>  
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span> <span class="o">-&gt;</span>  
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span>
     <span class="nv">dumpExceptions: </span><span class="kc">true</span><span class="p">,</span>
     <span class="nv">showStack: </span><span class="kc">true</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span> <span class="o">-&gt;</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span>
 
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views&#39;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views_012&#39;</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;view engine&#39;</span><span class="p">,</span> <span class="s1">&#39;jade&#39;</span>
 
 

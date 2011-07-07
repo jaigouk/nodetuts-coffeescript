@@ -32,13 +32,21 @@ User = new Schema
     default: 'user'     
 
 # Defining a static method
+#
 #` Schema.prototype.static = function(name, fn) {`
+#
 #`   if ('string' != typeof name)`
+#
 #`     for (var i in name)`
+#
 #`       this.statics[i] = name[i];`
+#
 #`   else`
+#
 #`     this.statics[name] = fn;`
+#
 #`   return this;`
+#
 #` };`
 
 #

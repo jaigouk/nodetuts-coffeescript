@@ -9,9 +9,12 @@
 # 
 # HTTP message headers are represented by an object like this:
 # 
-#`    { 'content-length': '123',
+#`    { 'content-length': '123', 
+#
 #    'content-type': 'text/plain',
+#
 #    'connection': 'keep-alive',
+#
 #    'accept': '*/*' }`
 http = require('http')
  

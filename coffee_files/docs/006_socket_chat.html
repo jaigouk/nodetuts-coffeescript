@@ -24,16 +24,17 @@
 
 <p>options is an object with the following defaults:  </p>
 
-<p><code>
-{ flags: 'r',
-  encoding: null,
-  fd: null,
-  mode: 0666,
-  bufferSize: 64 * 1024
-} 
-</code></p>
+<p><code>{ flags: 'r',</code></p>
 
-<p>options can include start and end values to read a range of bytes from the file instead of the entire file. Both start and end are inclusive and start at 0.</p>
+<p><code>encoding: null,</code></p>
+
+<p><code>fd: null,</code></p>
+
+<p><code>mode: 0666,</code></p>
+
+<p><code>bufferSize: 64 * 1024</code></p>
+
+<p><code>}</code></p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>options can include start and end values to read a range of bytes from the file instead of the entire file. Both start and end are inclusive and start at 0.</p>
 
 <p>An example to read the last 10 bytes of a file which is 100 bytes long:</p>
 

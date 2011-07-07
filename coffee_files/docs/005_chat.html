@@ -31,7 +31,7 @@
     <span class="k">if</span> <span class="o">!</span><span class="nx">username</span>
       <span class="nv">username = </span><span class="nx">line</span>
       <span class="nx">conn</span><span class="p">.</span><span class="nx">write</span> <span class="s2">&quot;Hello #{username}! \n&quot;</span>
-    <span class="nx">conn</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span> <span class="k">if</span> <span class="nx">line</span> <span class="o">==</span> <span class="s1">&#39;quit&#39;</span> 
+    <span class="nx">conn</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span> <span class="k">if</span> <span class="nx">line</span> <span class="o">is</span> <span class="s1">&#39;quit&#39;</span> 
     <span class="k">for</span> <span class="nx">one_connection</span> <span class="k">in</span> <span class="nx">connections</span>
       <span class="nx">one_connection</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;#{username}: #{line}\n&quot;</span><span class="p">)</span>
     

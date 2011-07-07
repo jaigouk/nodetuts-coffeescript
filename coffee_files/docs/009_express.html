@@ -6,7 +6,7 @@
 <li><a href="http://expressjs.com/">Express</a></li>
 <li><a href="https://github.com/visionmedia/express/tree/master/examples">Lots of Exprss examples (github)</a></li>
 <li><a href="http://camp.nodejs.org/videos/session-03_routing_workshop-guillermo_rauch.html">Node Camp 2010 Routing Workshop</a> - source codes are little bit old :( </li>
-<li><a href="https://github.com/visionmedia/jade">Jade</a> - </li>
+<li><a href="https://github.com/visionmedia/jade">Jade</a> </li>
 </ul>
 
 <hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">express= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
@@ -21,9 +21,11 @@
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">logger</span><span class="p">()</span>
-  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>don't forget to add / infront of views...</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views&#39;</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views_009&#39;</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;view engine&#39;</span><span class="p">,</span> <span class="s1">&#39;jade&#39;</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;view options&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nv">layout: </span><span class="kc">true</span><span class="p">}</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <h1>Route Middleware</h1>
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;view options&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nv">layout: </span><span class="kc">true</span><span class="p">}</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h1>Route Middleware</h1>
 
 <p>To keep things DRY and to increase readability we can apply this logic within a middleware. Multiple route middleware can be applied, and will be executed sequentially to apply further logic such as restricting access to a user account. Keeping in mind that middleware are simply functions, we can define function that returns the middleware in order to create a more expressive and flexible solution</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>
 

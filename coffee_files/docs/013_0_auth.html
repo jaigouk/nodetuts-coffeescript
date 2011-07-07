@@ -7,14 +7,15 @@
   <span class="nv">keepExtensions: </span><span class="kc">true</span> 
   <span class="nv">encoding: </span><span class="s1">&#39;binary&#39;</span>
   <span class="nv">uploadDir: </span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/static/uploads/photos&#39;</span>
-  <span class="nv">maxFieldsSize: </span><span class="mi">2</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span>
+  <span class="nv">maxFieldsSize: </span><span class="mi">2</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="nf">() -&gt;</span>     
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">logger</span><span class="p">()</span>         
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">bodyParser</span><span class="p">()</span> 
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">methodOverride</span><span class="p">()</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/static&#39;</span><span class="p">)</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>There're other session stores like redis, memcache
-We're going to use express' session store <br />
+In nodetuts screencast, he used express' session store.
+I just wanted to try redis one. <br />
 This will be erased when we restart app</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">cookieParser</span><span class="p">()</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">session</span> 
     <span class="nv">secret: </span><span class="s1">&#39;some secret strings&#39;</span>
@@ -26,12 +27,12 @@ This will be erased when we restart app</p>             </td>             <td cl
   <span class="k">else</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/sessions/new?redir=&#39;</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
     
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>  
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span> <span class="o">-&gt;</span>  
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span>
     <span class="nv">dumpExceptions: </span><span class="kc">true</span><span class="p">,</span>
     <span class="nv">showStack: </span><span class="kc">true</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span> <span class="o">-&gt;</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views_013&#39;</span>

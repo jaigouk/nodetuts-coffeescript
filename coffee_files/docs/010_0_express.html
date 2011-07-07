@@ -14,20 +14,20 @@
 <span class="nv">app = </span><span class="nx">express</span><span class="p">.</span><span class="nx">createServer</span><span class="p">()</span>
          
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="nf">() -&gt;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="o">-&gt;</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">logger</span><span class="p">()</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/static&#39;</span><span class="p">)</span>
   
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>  
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span> <span class="o">-&gt;</span>  
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span>
     <span class="nv">dumpExceptions: </span><span class="kc">true</span><span class="p">,</span>
     <span class="nv">showStack: </span><span class="kc">true</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span> <span class="o">-&gt;</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span>
 
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views&#39;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views_010&#39;</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;view engine&#39;</span><span class="p">,</span> <span class="s1">&#39;jade&#39;</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p><code>view options, {layout: true}</code> is default
 so, we don't need to write this line
 app.set 'view options', {layout: true}</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>
@@ -47,12 +47,12 @@ Everything was fine, but the partial in the /views/products/index.jade was not r
 <p>So, I consulted express' github examples.
 Examples were pretty new. about 3 days old. </p>
 
-<p>In this blog example, 
-https://github.com/visionmedia/express/tree/master/examples/blog/views
-There is no partial directory!!!
+<p>In this express github repo <a href="https://github.com/visionmedia/express/tree/master/examples/blog/views">blog example</a>, </p>
+
+<p>There is no partial directory!!!
 just post directory. I renamed partial directory to product. And It works now.
 And I changed the /views/partials/product.jade ====> /views/product/index.jade </p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>Still confused?
-have a look at this example. https://github.com/visionmedia/express/blob/master/examples/partials/views/ninja/index.jade</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/products&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>
+have a look at this <a href="https://github.com/visionmedia/express/blob/master/examples/partials/views/ninja/index.jade">express github repo example</a></p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/products&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;products/index&#39;</span><span class="p">,</span> <span class="nv">locals: products: </span><span class="nx">products</span><span class="p">.</span><span class="nx">all</span>
 
 

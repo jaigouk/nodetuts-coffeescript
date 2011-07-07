@@ -29,8 +29,8 @@ stats.isFIFO(),
 stats.isSocket(), </p></li>
 </ul>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">fs</span><span class="p">.</span><span class="nx">stat</span> <span class="nx">file_path</span><span class="p">,</span> <span class="nf">(err, stat) -&gt;</span> 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="nx">file_path</span>
-  <span class="k">if</span> <span class="nx">err</span>
-    <span class="k">throw</span> <span class="nx">err</span>        
+  <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
+            
     
   <span class="nv">server = </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span> <span class="nf">(req, res) -&gt;</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="mi">200</span><span class="p">,</span> 
@@ -40,8 +40,8 @@ readStream is a Readable Stream.  </p>             </td>             <td class="
 
 <p><strong>Experimental</strong> 
 Read the data from readableStream and send it to the writableStream. When writableStream.write(data) returns false readableStream will be paused until the drain event occurs on the writableStream. callback gets an error as its only argument and is called when writableStream is closed or when an error occurs.  </p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">util</span><span class="p">.</span><span class="nx">pump</span> <span class="nx">readStream</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nf">(err) -&gt;</span>
-      <span class="k">if</span> <span class="nx">err</span>
-        <span class="k">throw</span> <span class="nx">err</span>
+      <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
+        
 
   <span class="nx">server</span><span class="p">.</span><span class="nx">listen</span> <span class="mi">4000</span>
   

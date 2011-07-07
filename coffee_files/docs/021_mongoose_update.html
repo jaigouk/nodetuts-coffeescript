@@ -42,21 +42,25 @@ Just watch <strong><a href="http://www.10gen.com/presentation/mongosf2011/nodejs
   <span class="nv">email: </span><span class="nb">String</span>
   <span class="nv">body: </span><span class="nb">String</span>
 
-      </pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h2>Named scopes in mongoose</h2>
+      </pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h2>Named scope example</h2>
 
-<p>User.female.thirties.find (err, found) ->
-  console.log name for name in found</p>
+<p><code>User.female.thirties.find (err, found) -&gt;</code></p>
 
-<p>User.female.olderThan(30).youngerThan(40).find (err, found) ->
-  # do something</p>
+<p><code>console.log name for name in found</code></p>
 
-<p>UserSchema.namedscope 'olderThan', (age) ->
-  this.where('age').gte(age)</p>
+<p><code>User.female.olderThan(30).youngerThan(40).find (err, found) -&gt;</code></p>
 
-<p>UserSchema.namedscope 'youngerThan', (age) ->
-  this.where('age').lt(age)</p>
+<p><code># do something</code></p>
 
-<p>UserSchema.namedscope('thirties').olderThan(30).youngerThan(40)      </p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">PostSchema</span><span class="p">.</span><span class="nx">namedscope</span> <span class="s1">&#39;recent&#39;</span><span class="p">,</span> <span class="nf">(days) -&gt;</span>
+<p><code>UserSchema.namedscope 'olderThan', (age) -&gt;</code></p>
+
+<p><code>this.where('age').gte(age)</code></p>
+
+<p><code>UserSchema.namedscope 'youngerThan', (age) -&gt;</code></p>
+
+<p><code>this.where('age').lt(age)</code></p>
+
+<p><code>UserSchema.namedscope('thirties').olderThan(30).youngerThan(40)</code></p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">PostSchema</span><span class="p">.</span><span class="nx">namedscope</span> <span class="s1">&#39;recent&#39;</span><span class="p">,</span> <span class="nf">(days) -&gt;</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">).</span><span class="nx">gte</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1000</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="nx">days</span><span class="p">)</span>
 
 <span class="nx">PostSchema</span><span class="p">.</span><span class="nx">virtual</span><span class="p">(</span><span class="s1">&#39;shortBody&#39;</span><span class="p">).</span><span class="nx">get</span> <span class="o">-&gt;</span>
