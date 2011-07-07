@@ -6,10 +6,10 @@
 # * [node.ws.js](https://github.com/ncr/node.ws.js) - Basic Web Sockets Server for node.js with similar interface to tcp.createServer(...)
 #***   
 
-http= require('http')
-fs= require('fs')
-util= require('util')
-ws= require('./asset/ws.js')
+http = require 'http'
+fs = require 'fs'
+util = require 'util'
+ws = require './asset/ws.js'
 
 clients = []
 
@@ -60,7 +60,7 @@ ws.createServer (websocket) ->
       username = data.toString()
       websocket.write "Welcome, #{username}!"    
     feedback = "#{username} said: #{data.toString()}"
-    client.write(feedback) for client in clients
+    client.write feedback for client in clients
 
   websocket.on 'close', () ->
     pos = clients.indexOf(websocket)

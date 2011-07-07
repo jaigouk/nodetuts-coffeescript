@@ -10,15 +10,15 @@
 
 # **Streams are readable, writable, or both.** All streams are instances of EventEmitter.
 
-http= require('http')   
+http = require 'http'
 
 # ### File System    
 # File I/O is provided by simple wrappers around standard POSIX functions. To use this module do require('fs'). All the methods have asynchronous and synchronous forms.
 # 
 # The asynchronous form always take a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be null or undefined.
 
-fs= require('fs')
-util= require('util')
+fs = require 'fs'
+util = require 'util'
 file_path = __dirname + '/asset/cat.jpg'              
 
 # * fs.stat(path, [callback])

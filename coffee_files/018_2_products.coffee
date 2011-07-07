@@ -8,7 +8,7 @@
 # * [mongoose-types](https://github.com/bnoguchi/mongoose-types) -Types include: Email, Url
 # * [mongoose-auth](https://github.com/bnoguchi/mongoose-auth) - password, facebook, twitter, github, instagram
 #***
-mongoose= require('mongoose') 
+mongoose = require 'mongoose'
 Schema = mongoose.Schema
       
 Product = new Schema

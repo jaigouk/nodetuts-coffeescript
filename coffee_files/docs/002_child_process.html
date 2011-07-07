@@ -15,8 +15,8 @@ It is possible to stream data through the child's stdin, stdout, and stderr in a
 To create a child process use require('child_process').spawn(). 
 Child processes always have three streams associated with them. child.stdin, child.stdout, and child.stderr.</p>
 
-<p>ChildProcess is an EventEmitter.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
-<span class="nv">spawn= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;child_process&#39;</span><span class="p">).</span><span class="nx">spawn</span>
+<p>ChildProcess is an EventEmitter.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http = </span><span class="nx">require</span> <span class="s1">&#39;http&#39;</span>
+<span class="p">{</span><span class="nx">spawn</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;child_process&#39;</span>
 
 <span class="nv">server = </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span> <span class="nf">(req, res) -&gt;</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="mi">200</span><span class="p">,</span>

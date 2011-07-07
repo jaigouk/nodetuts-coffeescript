@@ -6,9 +6,9 @@
 <li><a href="https://github.com/creationix/step">Step </a> - An async control-flow library that makes stepping through logic easy.</li>
 </ul>
 
-<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
-<span class="nv">fs= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
-<span class="nv">step= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http = </span><span class="nx">require</span> <span class="s1">&#39;http&#39;</span>
+<span class="nv">fs = </span><span class="nx">require</span> <span class="s1">&#39;fs&#39;</span>
+<span class="nv">step = </span><span class="nx">require</span> <span class="s1">&#39;step&#39;</span>
 
 <span class="nv">file_path = </span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/asset/cat.jpg&#39;</span>
 <span class="nv">file_size = </span><span class="kc">null</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>The step library exports a single function called Step. It accepts any number of functions as arguments and runs them in serial order using the passed in this context as the callback to the next step.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">step</span> <span class="nv">get_file_size = </span><span class="o">-&gt;</span>

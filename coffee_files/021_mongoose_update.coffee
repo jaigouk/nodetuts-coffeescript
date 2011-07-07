@@ -13,7 +13,7 @@
 # in the episode 18. 
 # Just watch **[Mongoose Talk: Rapid Realtime App Development with Node.JS & MongoDB](http://www.10gen.com/presentation/mongosf2011/nodejs)** - **Highly Recommended**
 
-mongoose= require('mongoose')
+mongoose = require 'mongoose'
 Schema = mongoose.Schema
 
 PostSchema = new Schema

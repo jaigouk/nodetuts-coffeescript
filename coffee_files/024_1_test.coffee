@@ -1,4 +1,4 @@
-net= require('net')
+net = require 'net'
 stats = require './024_2_statistics'
 
 connect = ->        

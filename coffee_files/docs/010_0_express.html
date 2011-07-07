@@ -9,8 +9,7 @@
 <li><a href="https://github.com/visionmedia/jade">Jade</a> </li>
 </ul>
 
-<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">express= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
-
+<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">express = </span><span class="nx">require</span> <span class="s1">&#39;express&#39;</span>
 <span class="nv">app = </span><span class="nx">express</span><span class="p">.</span><span class="nx">createServer</span><span class="p">()</span>
          
 
@@ -53,12 +52,12 @@ Examples were pretty new. about 3 days old. </p>
 just post directory. I renamed partial directory to product. And It works now.
 And I changed the /views/partials/product.jade ====> /views/product/index.jade </p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>Still confused?
 have a look at this <a href="https://github.com/visionmedia/express/blob/master/examples/partials/views/ninja/index.jade">express github repo example</a></p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/products&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;products/index&#39;</span><span class="p">,</span> <span class="nv">locals: products: </span><span class="nx">products</span><span class="p">.</span><span class="nx">all</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;products/index&#39;</span><span class="p">,</span> <span class="nv">locals: </span><span class="p">{</span><span class="nv">products: </span><span class="nx">products</span><span class="p">.</span><span class="nx">all</span><span class="p">}</span>
 
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/products/:id&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span> 
   <span class="nv">product = </span><span class="nx">products</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>   
-  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;products/show&#39;</span><span class="p">,</span> <span class="nv">locals: product: </span><span class="nx">product</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;products/show&#39;</span><span class="p">,</span> <span class="nv">locals: </span><span class="p">{</span><span class="nv">product: </span><span class="nx">product</span><span class="p">}</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span> <span class="mi">4000</span>
 

@@ -3,7 +3,7 @@
 string_length = null
 # returns a random string with a specified length
 
-module.exports.generate = (string_length) ->
+exports.generate = (string_length) ->
   string_lengh = 6 if string_length is 0
   chars = "asdfsdfgfdghwertqwegpkap"
   randomstring = ''

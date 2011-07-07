@@ -16,7 +16,7 @@
 #    'connection': 'keep-alive',
 #
 #    'accept': '*/*' }`
-http = require('http')
+http = require 'http'
  
 # ### response.writeHead(statusCode, [reasonPhrase], [headers])
 # This method must only be called once on a message and it must be called before response.end() is called.

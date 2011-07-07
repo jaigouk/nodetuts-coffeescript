@@ -5,9 +5,9 @@
 # * **[Mongoose Talk: Rapid Realtime App Development with Node.JS & MongoDB](http://www.10gen.com/presentation/mongosf2011/nodejs)** - **Highly Recommended**
 #***
 
-express= require 'express'
+express = require 'express'
 form = require 'connect-form'
-util= require('util')
+util = require 'util'
 RedisStore = require('connect-redis')(express)
 
 # connecting / initializing db
@@ -24,7 +24,7 @@ app = express.createServer form
   uploadDir: __dirname + '/static/uploads/photos'
   maxFieldsSize: 2*1024*1024
 
-app.configure () ->     
+app.configure ->     
   app.use express.logger()         
   app.use express.bodyParser() 
   app.use express.methodOverride()
@@ -41,14 +41,14 @@ requiresLogin = (req, res,next) ->
   if req.session.user     
     next()
   else
-    res.redirect('/sessions/new?redir='+req.url)
+    res.redirect "/sessions/new?redir=#{req.url}"
     
-app.configure 'development', () ->  
+app.configure 'development', ->  
   app.use express.errorHandler
     dumpExceptions: true,
     showStack: true
 
-app.configure 'production', () ->
+app.configure 'production', ->
   app.use express.errorHandler
 
 app.set 'views', __dirname + '/views_018'
@@ -69,7 +69,7 @@ app.dynamicHelpers
 User = db.model('User')
 
 app.get '/sessions/new', (req, res) ->
-  res.render 'sessions/new', locals: redir: req.query.redir
+  res.render 'sessions/new', locals: {redir: req.query.redir}
 
 app.post '/sessions', (req, res) ->
   User.authenticate req.body.login, req.body.password , (err, user) ->
@@ -78,7 +78,7 @@ app.post '/sessions', (req, res) ->
       res.redirect req.body.redir or '/'
     else
       req.flash 'warn', 'Login failed'
-      res.render 'sessions/new', locals: redir: req.body.redir
+      res.render 'sessions/new', locals: {redir: req.body.redir}
  
 app.get '/sessions/destroy', (req, res) ->
   delete req.session.user
@@ -93,7 +93,7 @@ Product = db.model('Product')
 app.get '/products', requiresLogin, (req, res) -> 
   Product.find (err, found) ->
     throw err if err
-    res.render 'products/index', locals: products: found
+    res.render 'products/index', locals: {products: found}
 
 app.get '/products/new', requiresLogin, (req, res) ->  
   photos.list (err, photo_list) ->   
@@ -111,7 +111,7 @@ app.post '/products', requiresLogin, (req,res) ->
       res.redirect '/products'  
     else 
       req.flash 'ok', "Successfully updated."
-      res.redirect '/products/'+product.id
+      res.redirect "/products/#{product.id}"
 
 
 app.post '/products/:id', requiresLogin, (req, res) -> 
@@ -126,15 +126,15 @@ app.post '/products/:id', requiresLogin, (req, res) ->
     found.save (err, found) ->
       if err 
         req.flash 'warn', "Oops, failed to update."
-        res.redirect '/products/'+found.id     
+        res.redirect "/products/#{found.id}"     
       else                                         
         req.flash 'ok', "Successfully updated."
-        res.redirect '/products/'+found.id
+        res.redirect "/products/#{found.id}"
     
 app.get '/products/:id', (req, res) -> 
   Product.findById req.params.id, (err, product) ->
     throw err if err
-    res.render 'products/show', locals: product: product
+    res.render 'products/show', locals: {product: product}
 
 app.get '/products/:id/edit', requiresLogin, (req, res) -> 
   Product.findById req.params.id, (err1, found) ->
@@ -153,7 +153,7 @@ app.get '/photos/new', (req, res) ->
 
 app.get '/photos', (req, res) ->
   photos.list (err, photo_list) ->    
-    res.render 'photos/index', locals: photos: photo_list
+    res.render 'photos/index', locals: {photos: photo_list}
 
 app.post '/photos', (req, res, next) -> 
 
@@ -164,11 +164,11 @@ app.post '/photos', (req, res, next) ->
     if err
       next err
     else
-      console.log "\nuploaded %s to %s", files.image.filename, files.image.path
+      console.log "\nuploaded #{files.image.filename} to #{files.image.path}"
       res.redirect "/photos"
 
   req.form.on "progress", (bytesReceived, bytesExpected) ->
     percent = (bytesReceived / bytesExpected * 100) | 0
-    process.stdout.write "Uploading: %" + percent + "\r"      
+    process.stdout.write "Uploading: #{percent}% \r"
       
 app.listen 4000

@@ -56,10 +56,10 @@ spawns one worker per cpu (by default)</p>
 
 <p>In a new terminal tab, run the javascript file</p>
 
-<p><code>node --debug 014_0_tools.js</code>  </p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span> 
+<p><code>node --debug 014_0_tools.js</code>  </p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http = </span><span class="nx">require</span> <span class="s1">&#39;http&#39;</span>
  
 <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span> <span class="nf">(req,res) -&gt;</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;%s %s&#39;</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">method</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;#{req.method} #{req.url}&quot;</span><span class="p">)</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="mi">200</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">end</span> <span class="s1">&#39;Hello World2&#39;</span>
 <span class="p">.</span><span class="nx">listen</span> <span class="mi">4000</span>      

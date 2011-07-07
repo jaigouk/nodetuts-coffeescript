@@ -7,9 +7,9 @@
 # * [nodeconf 2011 (slides)](http://cl.ly/0B0C3f133K1m3j422n0K)
 # * [camp.nodejs 2010 (video)](http://camp.nodejs.org/videos/session-06_socketio_workshop-guillermo_rauch.html)
 #***   
-http= require('http')
-fs= require('fs')
-util= require('util')
+http = require 'http'
+fs = require 'fs'
+util = require 'util'
 
 server = http.createServer (req, res) ->
   res.writeHead 200,
@@ -20,7 +20,7 @@ server.listen 4000
 
 # ### Socket.io
                    
-io= require('socket.io').listen(server)
+io = require('socket.io').listen(server)
 io.sockets.on 'connection', (socket) ->
   username = ''  
 
@@ -38,7 +38,7 @@ io.sockets.on 'connection', (socket) ->
   #If you pass parameters, those will be automatically encoded and decoded in JSON for you. In addition, you can pass data around: 
 
   socket.on 'message', (msg) ->      
-    if !username     
+    if not username     
       username = msg                                             
       socket.emit 'message', "Welcome #{username}!\n"
     else

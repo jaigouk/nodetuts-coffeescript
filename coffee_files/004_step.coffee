@@ -2,9 +2,9 @@
 #***   
 # * [Step ](https://github.com/creationix/step) - An async control-flow library that makes stepping through logic easy.
 #***   
-http= require('http')
-fs= require('fs')
-step= require('step')
+http = require 'http'
+fs = require 'fs'
+step = require 'step'
 
 file_path = __dirname + '/asset/cat.jpg'
 file_size = null

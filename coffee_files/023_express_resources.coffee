@@ -3,8 +3,8 @@
 # * [express-resource](https://github.com/visionmedia/express-resource) - Resourceful routing for Express
 #***  
 
-express= require('express')
-resource= require('express-resource')
+express = require 'express'
+resource = require 'express-resource'
 
 
 

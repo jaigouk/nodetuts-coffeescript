@@ -12,7 +12,7 @@
 # Schema, Static definition are changed in mongoose 1.5.0.
 # It took some time for me. I consulted [mongoose API](http://mongoosejs.com/docs/api.html).
 
-mongoose= require('mongoose') 
+mongoose = require 'mongoose'
 Schema = mongoose.Schema
 
 User = new Schema

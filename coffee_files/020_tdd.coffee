@@ -24,9 +24,9 @@
 # * jasmine-node - no ranking
 
 
-vows= require('vows')   
-fs= require('fs')
-assert= require('assert')
+vows = require 'vows'
+fs = require 'fs'
+assert= require 'assert'
 
 vows
 .describe('Division by zero')

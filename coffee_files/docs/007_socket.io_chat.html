@@ -11,9 +11,9 @@
 <li><a href="http://camp.nodejs.org/videos/session-06_socketio_workshop-guillermo_rauch.html">camp.nodejs 2010 (video)</a></li>
 </ul>
 
-<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
-<span class="nv">fs= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
-<span class="nv">util= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">)</span>
+<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http = </span><span class="nx">require</span> <span class="s1">&#39;http&#39;</span>
+<span class="nv">fs = </span><span class="nx">require</span> <span class="s1">&#39;fs&#39;</span>
+<span class="nv">util = </span><span class="nx">require</span> <span class="s1">&#39;util&#39;</span>
 
 <span class="nv">server = </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span> <span class="nf">(req, res) -&gt;</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="mi">200</span><span class="p">,</span>
@@ -21,7 +21,7 @@
   <span class="nv">rs = </span><span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/asset/template2.html&#39;</span>
   <span class="nx">util</span><span class="p">.</span><span class="nx">pump</span><span class="p">(</span><span class="nx">rs</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
 <span class="nx">server</span><span class="p">.</span><span class="nx">listen</span> <span class="mi">4000</span>   </pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h3>Socket.io</h3>             </td>             <td class="code">               <div class="highlight"><pre>                   
-<span class="nv">io= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;socket.io&#39;</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="nx">server</span><span class="p">)</span>
+<span class="nv">io = </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;socket.io&#39;</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="nx">server</span><span class="p">)</span>
 <span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="kc">on</span> <span class="s1">&#39;connection&#39;</span><span class="p">,</span> <span class="nf">(socket) -&gt;</span>
   <span class="nv">username = </span><span class="s1">&#39;&#39;</span>  </pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h3>Namespce</h3>
 
@@ -33,7 +33,7 @@ socket.on('item')
 Each "sub-socket" or "namespace" has the same characteristics of any other Socket, but socket.io does the heavylifting of splitting the messages in a very lightweight and performant way. This technique is specially necessary for non-WebSocket transports, as they're usually associated with more than one connection.  </p>
 
 <p>Custom events allow you to simplify your code, and their implementation adds no overhead to the protocol. This means that if you don't use them, not much will change.</p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>If you pass parameters, those will be automatically encoded and decoded in JSON for you. In addition, you can pass data around: </p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">socket</span><span class="p">.</span><span class="kc">on</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>      
-    <span class="k">if</span> <span class="o">!</span><span class="nx">username</span>     
+    <span class="k">if</span> <span class="o">not</span> <span class="nx">username</span>     
       <span class="nv">username = </span><span class="nx">msg</span>                                             
       <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="s2">&quot;Welcome #{username}!\n&quot;</span>
     <span class="k">else</span>

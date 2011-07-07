@@ -30,7 +30,7 @@ module.exports.set = (id, product) ->
   product.id = id
   products[id - 1] = product
     
-module.exports.new = () ->
+module.exports.new = ->
   name : ''
   description: ''
   price: 0

@@ -7,8 +7,7 @@
 #***   
 #  
 
-express= require('express')
-
+express = require 'express'
 app = express.createServer()
          
 
@@ -57,11 +56,11 @@ products = require './010_1_products'
 # Still confused?
 # have a look at this [express github repo example](https://github.com/visionmedia/express/blob/master/examples/partials/views/ninja/index.jade)
 app.get '/products', (req, res) ->
-  res.render 'products/index', locals: products: products.all
+  res.render 'products/index', locals: {products: products.all}
 
 
 app.get '/products/:id', (req, res) -> 
   product = products.find(req.params.id)   
-  res.render 'products/show', locals: product: product
+  res.render 'products/show', locals: {product: product}
 
 app.listen 4000

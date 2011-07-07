@@ -15,9 +15,9 @@
 #***   
 #  
 
-express= require 'express' 
+express = require 'express' 
 form = require 'connect-form'
-util= require('util')
+util = require 'util'
 # connect-form middleware uses the formidable middleware to parse urlencoded and multipart form data               
 
 # If you want the files written to incomingForm.uploadDir to include the extensions of the original files, set this property to true.                          
@@ -64,7 +64,7 @@ app.get '/photos/new', (req, res) ->
   
 app.get '/photos', (req, res) ->
   photos.list (err, photo_list) ->    
-    res.render 'photos/index', locals: photos: photo_list
+    res.render 'photos/index', locals: {photos: photo_list}
   
 app.post '/photos', (req, res, next) -> 
 
@@ -75,18 +75,18 @@ app.post '/photos', (req, res, next) ->
     if err
       next err
     else
-      console.log "\nuploaded %s to %s", files.image.filename, files.image.path
+      console.log "\nuploaded #{files.image.filename} to #{files.image.path}"
       res.redirect "/photos"
   
   req.form.on "progress", (bytesReceived, bytesExpected) ->
     percent = (bytesReceived / bytesExpected * 100) | 0
-    process.stdout.write "Uploading: %" + percent + "\r"
+    process.stdout.write "Uploading: #{percent}% \r"
 
 
 # Products          
 products = require './012_2_products'    
 app.get '/products', (req, res) ->
-  res.render 'products/index', locals: products: products.all
+  res.render 'products/index', locals: {products: products.all}
 
 app.get '/products/new', (req, res) ->  
   photos.list (err, photo_list) ->   
@@ -108,7 +108,7 @@ app.post '/products/:id', (req, res) ->
     
 app.get '/products/:id', (req, res) -> 
   product = products.find(req.params.id)   
-  res.render 'products/show3', locals: product: product
+  res.render 'products/show3', locals: {product: product}
 
 app.get '/products/:id/edit', (req, res) -> 
   product = products.find(req.params.id)   

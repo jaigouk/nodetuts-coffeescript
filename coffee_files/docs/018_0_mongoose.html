@@ -8,9 +8,9 @@
 <li><strong><a href="http://www.10gen.com/presentation/mongosf2011/nodejs">Mongoose Talk: Rapid Realtime App Development with Node.JS &amp; MongoDB</a></strong> - <strong>Highly Recommended</strong></li>
 </ul>
 
-<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">express= </span><span class="nx">require</span> <span class="s1">&#39;express&#39;</span>
+<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">express = </span><span class="nx">require</span> <span class="s1">&#39;express&#39;</span>
 <span class="nv">form = </span><span class="nx">require</span> <span class="s1">&#39;connect-form&#39;</span>
-<span class="nv">util= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">)</span>
+<span class="nv">util = </span><span class="nx">require</span> <span class="s1">&#39;util&#39;</span>
 <span class="nv">RedisStore = </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;connect-redis&#39;</span><span class="p">)(</span><span class="nx">express</span><span class="p">)</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>connecting / initializing db</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">mongoose= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">)</span>
 <span class="nv">db = </span><span class="nx">mongoose</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;mongodb://localhost/nodetuts&#39;</span><span class="p">)</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p><a href="http://visionmedia.github.com/connect-form/">connect-form</a> 
 why? Connect Form is a multipart / urlencoded form parsing middleware utilizing node-formidable behind the scenes.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">app = </span><span class="nx">express</span><span class="p">.</span><span class="nx">createServer</span> <span class="nx">form</span> 
@@ -19,7 +19,7 @@ why? Connect Form is a multipart / urlencoded form parsing middleware utilizing 
   <span class="nv">uploadDir: </span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/static/uploads/photos&#39;</span>
   <span class="nv">maxFieldsSize: </span><span class="mi">2</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="nf">() -&gt;</span>     
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="o">-&gt;</span>     
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">logger</span><span class="p">()</span>         
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">bodyParser</span><span class="p">()</span> 
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">methodOverride</span><span class="p">()</span>
@@ -34,14 +34,14 @@ This will be erased when we restart app</p>             </td>             <td cl
   <span class="k">if</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">user</span>     
     <span class="nx">next</span><span class="p">()</span>
   <span class="k">else</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/sessions/new?redir=&#39;</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s2">&quot;/sessions/new?redir=#{req.url}&quot;</span>
     
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>  
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span> <span class="o">-&gt;</span>  
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span>
     <span class="nv">dumpExceptions: </span><span class="kc">true</span><span class="p">,</span>
     <span class="nv">showStack: </span><span class="kc">true</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span> <span class="o">-&gt;</span>
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views_018&#39;</span>
@@ -55,7 +55,7 @@ This will be erased when we restart app</p>             </td>             <td cl
     <span class="nx">req</span><span class="p">.</span><span class="nx">flash</span><span class="p">()</span>         </pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>sessions</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">User = </span><span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">)</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/sessions/new&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;sessions/new&#39;</span><span class="p">,</span> <span class="nv">locals: redir: </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">redir</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;sessions/new&#39;</span><span class="p">,</span> <span class="nv">locals: </span><span class="p">{</span><span class="nv">redir: </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">redir</span><span class="p">}</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">post</span> <span class="s1">&#39;/sessions&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>
   <span class="nx">User</span><span class="p">.</span><span class="nx">authenticate</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">login</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span> <span class="p">,</span> <span class="nf">(err, user) -&gt;</span>
@@ -64,7 +64,7 @@ This will be erased when we restart app</p>             </td>             <td cl
       <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">redir</span> <span class="o">or</span> <span class="s1">&#39;/&#39;</span>
     <span class="k">else</span>
       <span class="nx">req</span><span class="p">.</span><span class="nx">flash</span> <span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="s1">&#39;Login failed&#39;</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;sessions/new&#39;</span><span class="p">,</span> <span class="nv">locals: redir: </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">redir</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;sessions/new&#39;</span><span class="p">,</span> <span class="nv">locals: </span><span class="p">{</span><span class="nv">redir: </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">redir</span><span class="p">}</span>
  
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/sessions/destroy&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>
   <span class="k">delete</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">user</span>
@@ -77,7 +77,7 @@ This will be erased when we restart app</p>             </td>             <td cl
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/products&#39;</span><span class="p">,</span> <span class="nx">requiresLogin</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span> 
   <span class="nx">Product</span><span class="p">.</span><span class="nx">find</span> <span class="nf">(err, found) -&gt;</span>
     <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;products/index&#39;</span><span class="p">,</span> <span class="nv">locals: products: </span><span class="nx">found</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;products/index&#39;</span><span class="p">,</span> <span class="nv">locals: </span><span class="p">{</span><span class="nv">products: </span><span class="nx">found</span><span class="p">}</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/products/new&#39;</span><span class="p">,</span> <span class="nx">requiresLogin</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>  
   <span class="nx">photos</span><span class="p">.</span><span class="nx">list</span> <span class="nf">(err, photo_list) -&gt;</span>   
@@ -95,7 +95,7 @@ This will be erased when we restart app</p>             </td>             <td cl
       <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s1">&#39;/products&#39;</span>  
     <span class="k">else</span> 
       <span class="nx">req</span><span class="p">.</span><span class="nx">flash</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span> <span class="s2">&quot;Successfully updated.&quot;</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s1">&#39;/products/&#39;</span><span class="o">+</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s2">&quot;/products/#{product.id}&quot;</span>
 
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">post</span> <span class="s1">&#39;/products/:id&#39;</span><span class="p">,</span> <span class="nx">requiresLogin</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span> 
@@ -110,15 +110,15 @@ This will be erased when we restart app</p>             </td>             <td cl
     <span class="nx">found</span><span class="p">.</span><span class="nx">save</span> <span class="nf">(err, found) -&gt;</span>
       <span class="k">if</span> <span class="nx">err</span> 
         <span class="nx">req</span><span class="p">.</span><span class="nx">flash</span> <span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="s2">&quot;Oops, failed to update.&quot;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s1">&#39;/products/&#39;</span><span class="o">+</span><span class="nx">found</span><span class="p">.</span><span class="nx">id</span>     
+        <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s2">&quot;/products/#{found.id}&quot;</span>     
       <span class="k">else</span>                                         
         <span class="nx">req</span><span class="p">.</span><span class="nx">flash</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span> <span class="s2">&quot;Successfully updated.&quot;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s1">&#39;/products/&#39;</span><span class="o">+</span><span class="nx">found</span><span class="p">.</span><span class="nx">id</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s2">&quot;/products/#{found.id}&quot;</span>
     
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/products/:id&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span> 
   <span class="nx">Product</span><span class="p">.</span><span class="nx">findById</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nf">(err, product) -&gt;</span>
     <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;products/show&#39;</span><span class="p">,</span> <span class="nv">locals: product: </span><span class="nx">product</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;products/show&#39;</span><span class="p">,</span> <span class="nv">locals: </span><span class="p">{</span><span class="nv">product: </span><span class="nx">product</span><span class="p">}</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/products/:id/edit&#39;</span><span class="p">,</span> <span class="nx">requiresLogin</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span> 
   <span class="nx">Product</span><span class="p">.</span><span class="nx">findById</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nf">(err1, found) -&gt;</span>
@@ -133,7 +133,7 @@ This will be erased when we restart app</p>             </td>             <td cl
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s1">&#39;/photos&#39;</span><span class="p">,</span> <span class="nf">(req, res) -&gt;</span>
   <span class="nx">photos</span><span class="p">.</span><span class="nx">list</span> <span class="nf">(err, photo_list) -&gt;</span>    
-    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;photos/index&#39;</span><span class="p">,</span> <span class="nv">locals: photos: </span><span class="nx">photo_list</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s1">&#39;photos/index&#39;</span><span class="p">,</span> <span class="nv">locals: </span><span class="p">{</span><span class="nv">photos: </span><span class="nx">photo_list</span><span class="p">}</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">post</span> <span class="s1">&#39;/photos&#39;</span><span class="p">,</span> <span class="nf">(req, res, next) -&gt;</span> </pre></div>             </td>           </tr>                               <tr id="section-9">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-9">&#182;</a>               </div>               <p>connect-form adds the req.form object
 we can (optionally) define onComplete, passing
@@ -141,12 +141,12 @@ the exception (if any) fields parsed, and files parsed</p>             </td>    
     <span class="k">if</span> <span class="nx">err</span>
       <span class="nx">next</span> <span class="nx">err</span>
     <span class="k">else</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s2">&quot;\nuploaded %s to %s&quot;</span><span class="p">,</span> <span class="nx">files</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">files</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">path</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s2">&quot;\nuploaded #{files.image.filename} to #{files.image.path}&quot;</span>
       <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s2">&quot;/photos&quot;</span>
 
   <span class="nx">req</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="kc">on</span> <span class="s2">&quot;progress&quot;</span><span class="p">,</span> <span class="nf">(bytesReceived, bytesExpected) -&gt;</span>
     <span class="nv">percent = </span><span class="p">(</span><span class="nx">bytesReceived</span> <span class="err">/ bytesExpected * 100) | 0</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span> <span class="s2">&quot;Uploading: %&quot;</span> <span class="o">+</span> <span class="nx">percent</span> <span class="o">+</span> <span class="s2">&quot;\r&quot;</span>      
+    <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span> <span class="s2">&quot;Uploading: #{percent}% \r&quot;</span>
       
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span> <span class="mi">4000</span>
 

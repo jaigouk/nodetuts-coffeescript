@@ -43,7 +43,7 @@ qinsertAll = (coll, callback) ->
     elem = queue.splice(0,1)[0]
     qinsertElement elem, (err, elem) ->
       throw err if err
-      console.log  elem + ' inserted'              
+      console.log  "#{elem} inserted"              
       # we can get out of stack either by callling setTimeout
       # or nexTick...
       setTimeout iterate, 0

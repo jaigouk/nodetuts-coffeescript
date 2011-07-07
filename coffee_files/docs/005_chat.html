@@ -7,8 +7,8 @@
 <li><a href="https://github.com/pgte/carrier">Carrier</a> - Evented stream line reader for node.js </li>
 </ul>
 
-<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">net= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;net&#39;</span><span class="p">)</span>
-<span class="nv">carrier= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;carrier&#39;</span><span class="p">)</span>
+<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">net = </span><span class="nx">require</span> <span class="s1">&#39;net&#39;</span>
+<span class="nv">carrier = </span><span class="nx">require</span> <span class="s1">&#39;carrier&#39;</span>
 
 <span class="nv">connections = </span><span class="p">[]</span>
  </pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h3>net</h3>
@@ -28,7 +28,7 @@
   <span class="nx">conn</span><span class="p">.</span><span class="nx">write</span> <span class="s1">&#39;Please input your user name: \n&#39;</span>
   <span class="nv">username = </span><span class="s1">&#39;&#39;</span>
   <span class="nx">carrier</span><span class="p">.</span><span class="nx">carry</span> <span class="nx">conn</span><span class="p">,</span> <span class="nf">(line) -&gt;</span>
-    <span class="k">if</span> <span class="o">!</span><span class="nx">username</span>
+    <span class="k">if</span> <span class="o">not</span> <span class="nx">username</span>
       <span class="nv">username = </span><span class="nx">line</span>
       <span class="nx">conn</span><span class="p">.</span><span class="nx">write</span> <span class="s2">&quot;Hello #{username}! \n&quot;</span>
     <span class="nx">conn</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span> <span class="k">if</span> <span class="nx">line</span> <span class="o">is</span> <span class="s1">&#39;quit&#39;</span> 

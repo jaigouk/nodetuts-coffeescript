@@ -3,8 +3,8 @@
 # * [Node API doc - Net](http://nodejs.org/docs/v0.4.9/api/net.html)
 # * [Carrier](https://github.com/pgte/carrier) - Evented stream line reader for node.js 
 #***   
-net= require('net')
-carrier= require('carrier')
+net = require 'net'
+carrier = require 'carrier'
 
 connections = []
  
@@ -26,7 +26,7 @@ net.createServer (conn) ->
   conn.write 'Please input your user name: \n'
   username = ''
   carrier.carry conn, (line) ->
-    if !username
+    if not username
       username = line
       conn.write "Hello #{username}! \n"
     conn.end() if line is 'quit' 

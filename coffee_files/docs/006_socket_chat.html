@@ -9,10 +9,10 @@
 <li><a href="https://github.com/ncr/node.ws.js">node.ws.js</a> - Basic Web Sockets Server for node.js with similar interface to tcp.createServer(...)</li>
 </ul>
 
-<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
-<span class="nv">fs= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
-<span class="nv">util= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">)</span>
-<span class="nv">ws= </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./asset/ws.js&#39;</span><span class="p">)</span>
+<hr />             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">http = </span><span class="nx">require</span> <span class="s1">&#39;http&#39;</span>
+<span class="nv">fs = </span><span class="nx">require</span> <span class="s1">&#39;fs&#39;</span>
+<span class="nv">util = </span><span class="nx">require</span> <span class="s1">&#39;util&#39;</span>
+<span class="nv">ws = </span><span class="nx">require</span> <span class="s1">&#39;./asset/ws.js&#39;</span>
 
 <span class="nv">clients = </span><span class="p">[]</span>
 
@@ -56,7 +56,7 @@ fs.createReadStream('sample.txt', {start: 90, end: 99});
       <span class="nv">username = </span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
       <span class="nx">websocket</span><span class="p">.</span><span class="nx">write</span> <span class="s2">&quot;Welcome, #{username}!&quot;</span>    
     <span class="nv">feedback = </span><span class="s2">&quot;#{username} said: #{data.toString()}&quot;</span>
-    <span class="nx">client</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">feedback</span><span class="p">)</span> <span class="k">for</span> <span class="nx">client</span> <span class="k">in</span> <span class="nx">clients</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nx">write</span> <span class="nx">feedback</span> <span class="k">for</span> <span class="nx">client</span> <span class="k">in</span> <span class="nx">clients</span>
 
   <span class="nx">websocket</span><span class="p">.</span><span class="kc">on</span> <span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>
     <span class="nv">pos = </span><span class="nx">clients</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">websocket</span><span class="p">)</span>

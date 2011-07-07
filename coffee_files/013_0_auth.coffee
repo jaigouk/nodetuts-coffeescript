@@ -1,9 +1,9 @@
 # # Authentication
 
 
-express= require 'express' 
+express = require 'express' 
 form = require 'connect-form'
-util= require('util')
+util = require 'util'
 RedisStore = require('connect-redis')(express)
 
 app = express.createServer form 
@@ -56,7 +56,7 @@ app.dynamicHelpers
 # sessions
 
 app.get '/sessions/new', (req, res) ->
-  res.render 'sessions/new', locals: redir: req.query.redir
+  res.render 'sessions/new', locals: {redir: req.query.redir}
 
 app.post '/sessions', (req, res) ->
   users.authenticate req.body.login, req.body.password, (user) ->
@@ -65,7 +65,7 @@ app.post '/sessions', (req, res) ->
       res.redirect req.body.redir or '/'
     else
       req.flash 'warn', 'Login failed'
-      res.render 'sessions/new', locals: redir: req.body.redir
+      res.render 'sessions/new', locals: {redir: req.body.redir}
  
 app.get '/sessions/destroy', (req, res) ->
   delete req.session.user
@@ -81,7 +81,7 @@ app.get '/photos/new', (req, res) ->
   
 app.get '/photos', (req, res) ->
   photos.list (err, photo_list) ->    
-    res.render 'photos/index', locals: photos: photo_list
+    res.render 'photos/index', locals: {photos: photo_list}
   
 app.post '/photos', (req, res, next) -> 
 
@@ -92,18 +92,18 @@ app.post '/photos', (req, res, next) ->
     if err
       next err
     else
-      console.log "\nuploaded %s to %s", files.image.filename, files.image.path
+      console.log "\nuploaded #{files.image.filename} to #{files.image.path}"
       res.redirect "/photos"
   
   req.form.on "progress", (bytesReceived, bytesExpected) ->
     percent = (bytesReceived / bytesExpected * 100) | 0
-    process.stdout.write "Uploading: %" + percent + "\r"
+    process.stdout.write "Uploading: #{percent}% \r"
 
 
 # Products          
 
 app.get '/products', requiresLogin, (req, res) ->
-  res.render 'products/index', locals: products: products.all
+  res.render 'products/index', locals: {products: products.all}
 
 app.get '/products/new', requiresLogin, (req, res) ->  
   photos.list (err, photo_list) ->   
@@ -125,7 +125,7 @@ app.post '/products/:id', requiresLogin, (req, res) ->
     
 app.get '/products/:id', (req, res) -> 
   product = products.find(req.params.id)   
-  res.render 'products/show3', locals: product: product
+  res.render 'products/show3', locals: {product: product}
 
 app.get '/products/:id/edit', requiresLogin, (req, res) -> 
   product = products.find(req.params.id)   

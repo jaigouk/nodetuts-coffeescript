@@ -5,8 +5,8 @@
 # * [HowToNode Article by creationix](http://howtonode.org/connect-it) (Thursday July 28, 2010)
 # * [Connect Milddleware list](https://github.com/senchalabs/connect/wiki)
 #***
-util= require('util')
-module.exports = () ->
+util = require 'util'
+module.exports = ->
   counter = 0
   (req, res, next) ->
     writeHead = res.writeHead                              

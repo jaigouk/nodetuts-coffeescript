@@ -5,9 +5,9 @@
 # * [HowToNode Article by creationix](http://howtonode.org/connect-it) (Thursday July 28, 2010)
 # * [Connect Milddleware list](https://github.com/senchalabs/connect/wiki)
 #***
-fs= require('fs')
+fs = require 'fs'
 
-module.exports = () ->
+module.exports = ->
   (req, res, next) ->    
 
     fs.readFile req.url.substr(1), (err, data) ->      
@@ -15,8 +15,8 @@ module.exports = () ->
       
       #just move on. 
       #some errors like getting a favicon  
-      # next if err 
+      #next if err 
       console.log err if err              
       res.writeHead 200,
        'Content-Type': 'application/javascript'
-      res.end(data)
+      res.end data

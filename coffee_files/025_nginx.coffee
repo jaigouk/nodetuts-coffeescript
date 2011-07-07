@@ -7,7 +7,7 @@
 #
 #!/usr/bin/env node
 
-express= require('express')
+express = require 'express'
 
 app = express.createServer()
 app.configure ->

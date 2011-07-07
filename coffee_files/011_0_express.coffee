@@ -7,8 +7,7 @@
 #***   
 #  
 
-express= require('express')
-
+express = require 'express'
 app = express.createServer()
          
 # Middleware ordering is important.
@@ -39,7 +38,7 @@ app.get '/', (req, res) ->
 products = require './011_1_products'
     
 app.get '/products', (req, res) ->
-  res.render 'products/index', locals: products: products.all
+  res.render 'products/index', locals: {products: products.all}
 
 # The order of app.get 'xxx' is important.
 # If you put this /products/new below the /product/:id,
@@ -51,11 +50,11 @@ app.get '/products/new', (req, res) ->
 
 app.get '/products/:id', (req, res) -> 
   product = products.find(req.params.id)   
-  res.render 'products/show', locals: product: product
+  res.render 'products/show', locals: {product: product}
 
 app.get '/products/:id/edit', (req, res) -> 
   product = products.find(req.params.id)   
-  res.render 'products/edit', locals: product: product
+  res.render 'products/edit', locals: {product: product}
 
 app.post '/products/:id', (req, res) ->
   id = req.params.id

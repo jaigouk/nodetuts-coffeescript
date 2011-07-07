@@ -1,4 +1,4 @@
-fs= require('fs')
+fs = require 'fs'
 
 src_path = __dirname + '/static/uploads/photos'
 module.exports.list = (callback) ->

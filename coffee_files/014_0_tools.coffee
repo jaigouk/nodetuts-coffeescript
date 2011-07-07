@@ -47,10 +47,10 @@
 # `node --debug 014_0_tools.js`  
 #
 #
-http= require('http') 
+http = require 'http'
  
 http.createServer (req,res) ->
-  console.log('%s %s', req.method, req.url)
+  console.log("#{req.method} #{req.url}")
   res.writeHead 200
   res.end 'Hello World2'
 .listen 4000      

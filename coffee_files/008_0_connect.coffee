@@ -23,7 +23,7 @@
 # 
 # And this solved the problem.
 
-connect= require('connect')
+connect = require 'connect'
 
 connect.createServer(require('./008_2_log-it')() 
 , require('./008_1_serve-js')())

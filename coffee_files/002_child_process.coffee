@@ -10,8 +10,8 @@
 # 
 # ChildProcess is an EventEmitter.
 
-http= require('http')
-spawn= require('child_process').spawn
+http = require 'http'
+{spawn} = require 'child_process'
 
 server = http.createServer (req, res) ->
   res.writeHead 200,
