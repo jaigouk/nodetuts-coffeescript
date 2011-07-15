@@ -22,18 +22,19 @@ http.createServer (req, res) ->
     # 
     # options is an object with the following defaults:  
     #
-    # 
-    #` { flags: 'r',`
+    #```` 
+    # { flags: 'r',`
     #
-    #`   encoding: null,`
+    #   encoding: null,`
     #
-    #`   fd: null,`
+    #   fd: null,`
     #
-    #`   mode: 0666,`
+    #   mode: 0666,`
     #
-    #`   bufferSize: 64 * 1024`
+    #   bufferSize: 64 * 1024`
     #
-    #` } `
+    # }
+    # ````
 
     #
     # options can include start and end values to read a range of bytes from the file instead of the entire file. Both start and end are inclusive and start at 0.

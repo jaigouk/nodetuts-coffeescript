@@ -90,4 +90,4 @@ There're lots of resources out there, but I selected these resources that are ac
 
 * [Spine](http://maccman.github.com/spine/) 
 * [Spine Tutorials](http://maccman.github.com/spine.tutorials/) 
-* [spine related awesome projects by macman](https://github.com/maccman) 
+* [spine related awesome projects by maccman](https://github.com/maccman) 
