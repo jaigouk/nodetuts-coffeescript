@@ -21,7 +21,10 @@
 # * nodemon        v0.5.3
 # * node-inspector v0.1.6
 # * mongoose       v1.5.0
-# * vows           v0.5.8
+# * vows           v0.5.8  
+#
+# 
+#
 #***   
 # # Resources
 # There're lots of resources out there, but I selected these resources that are actually useful for me.
