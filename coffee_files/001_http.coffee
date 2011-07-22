@@ -24,7 +24,7 @@ http = require 'http'
 server = http.createServer (req, res) ->
   console.log 'new req'
   res.writeHead 200,
-    'Content-Type': 'text/pain'
+    'Content-Type': 'text/plain'
   res.end 'Hello World'
 
 # ### server.listen(port, [hostname], [callback]) 
