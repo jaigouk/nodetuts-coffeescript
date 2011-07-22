@@ -65,6 +65,6 @@ ws.createServer (websocket) ->
 
   websocket.on 'close', () ->
     pos = clients.indexOf(websocket)
-    client.splice pos, 1 if pos >= 0 
+    clients.splice pos, 1 if pos >= 0 
 
 .listen 8080
