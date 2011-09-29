@@ -2,14 +2,14 @@
 # # NodeTuts in Coffeescript
 # Awesome **[Nodetuts](nodetuts.com)** in coffeescript. 
 #
-# Last updated: July 8, 2011
+# Last updated: September 29, 2011
 # 
 # by [Jai-Gouk Kim](http://jaigouk.com)
 #
 #***   
 # ## Works on...
-# * node           v0.4.9 
-# * coffee-script  v1.1.1
+# * node           v0.4.12 
+# * coffee-script  v1.1.2
 # * step           v0.0.4
 # * carrier        v0.1.2
 # * socket.io      v0.7.6
