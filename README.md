@@ -19,7 +19,7 @@
 Awesome Nodetuts in coffeescript.
 
 ## Works on...
-* node           v0.4.9 
+* node           v0.4.12 
 * coffee-script  v1.1.1
 * step           v0.0.4
 * carrier        v0.1.2
